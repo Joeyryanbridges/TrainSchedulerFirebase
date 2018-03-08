@@ -1,0 +1,31 @@
+
+
+h3{
+    text-align: center;
+    color: black;
+    float: right;
+    padding-top: 70px; 
+}
+
+
+.jumbotron {
+	border-radius: 25px;
+    background-color: transparent;
+    margin-left: 1%;
+    margin-right: 5%;
+    margin-top: 1%;
+}
+
+.train{
+    border-radius: 25px;
+}
+
+
+.card-header {
+    background: gray; 
+    border-radius: 25px;
+	border-style: solid;
+	border-width: 1px;
+
+}
+
