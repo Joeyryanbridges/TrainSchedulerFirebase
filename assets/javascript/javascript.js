@@ -32,7 +32,6 @@ $("click-button").on("click", function() {
         destination: destinationForm,
         first: trainTimeForm,
         frequency: frequencyForm,
-
     };
 
     //setting new values in the database
@@ -44,6 +43,29 @@ $("click-button").on("click", function() {
     console.log(newTrain.first);
     console.log(newTrain.frequency);
 
-    
-
+    //clearing the inputs
+    $("#trainNameForm").val("");
+    $("destinationForm").val("");
+    $("#trainTimeForm").val("");
+    $("#frequencyForm").val("");
 });
+
+//creating firebase event for adding new train to database and a row in HTML when user adds entry
+database.ref().on("child_added", function(childSnapshot, prevChildKey) {
+    console.log(childSnapshot.val());
+
+    //storing everything into a variable
+    var trainName = childSnapshot.val().train; 
+    var trainDestination = childSnapshot.val().destination;
+    var trainTime = childSnapshot.val().first;
+    var trainFrequency = chilsSnapshot.val().frequency;
+
+    //variable to figure converted train time
+    var trainTimeConverted = moment(trainTime, "HH:mm");
+
+    //declaring a time difference variable
+    var timeDifference = moment().diff(moment(trainTimeConverted), "minutes"); 
+        console.log(timeDifference);
+});
+
+
