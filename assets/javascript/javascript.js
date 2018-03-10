@@ -66,6 +66,19 @@ database.ref().on("child_added", function(childSnapshot, prevChildKey) {
     //declaring a time difference variable
     var timeDifference = moment().diff(moment(trainTimeConverted), "minutes"); 
         console.log(timeDifference);
+
+    var frequencyMinutes = childSnapshot.val().frequency;
+        console.log("Frequency Minutes: " + frequencyMinutes);
+    
+    var minutesAway = Math.abs(timeDifference % frequencyMinutes);
+        console.log("Minutes Away: " + minutesAway);
+    
+    var nextArrival = moment(currentTime).add(minutesAway, "minutes").format("hh:mm A");
+        console.log("Next Arrival: " + nextArrival); 
+        
+    //adding into table
+    $("#trainScheduleTable > tbody").append("<tr><td>" + trainName + "<tr><td>" + trainDestination + "<tr><td>" + trainFrequency + "<tr><td>" + nextArrival + "<tr><td>" + minutesAway + "<tr><td>")
+    
 });
 
 
