@@ -14,6 +14,7 @@
 
   //Declare current time
   var currentTime = moment().format();
+  
     //Logging the current time-Working!
     console.log("Current Time: " + currentTime);
    
@@ -23,9 +24,11 @@ $("click-button").on("click", function() {
     //Grabbing user input
     var trainNameForm = ("#trainNameForm").val().trim(); 
     var destinationForm = ("#destinationForm").val().trim();
+
     //Tracking time 
     var trainTimeForm = moment($("#trainTimeForm").val().trim(), "HH:mm").format("HH:mm");
     var frequencyForm = ("#frequencyForm").val().trim();
+
     //creating local "temporary" objects for holding inputs
     var newTrain = {
         train: trainNameForm,
@@ -33,7 +36,6 @@ $("click-button").on("click", function() {
         first: trainTimeForm,
         frequency: frequencyForm,
     };
-
     //setting new values in the database
     database.ref().push(newTrain);
 

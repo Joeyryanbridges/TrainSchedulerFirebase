@@ -4,7 +4,8 @@ h3{
     text-align: center;
     color: black;
     float: right;
-    padding-top: 70px; 
+    padding-top: 70px;
+    text-shadow: slategray;
 }
 
 
@@ -18,6 +19,7 @@ h3{
 
 .train{
     border-radius: 25px;
+    border: 3px solid black;
 }
 
 
