@@ -49,20 +49,18 @@ $("click-button").on("click", function() {
     $("#trainNameForm").val("");
     $("#destinationForm").val("");
     $("#trainTimeForm").val("");
-    $("#frequencyForm").val("");
+    $("#frequencyForm").val("");   
 });
 
 //creating firebase event for adding new train to database 
-database.ref().on("child_added", function(childSnapshot) {
+database.ref().on("child_added", function(childSnapshot, prevChildKey) {
     console.log(childSnapshot.val());
 
     var child = childSnapshot.val();
     $("#table-name").append(child.train+ "<br>");
     $("#table-destination").append(child.destination+ "<br>");
     $("#table-nextArrival").append(child.first + "<br>");
-    $("#table-frequency").append(child.frequency + "<br>"); 
-    $("#table-minutesAway").append(child.minutesAway + "<br>"); 
-});
+    $("#table-frequencyForm").append(child.frequency + "<br>"); 
 
     //variable to figure converted train time
     var trainTimeConverted = moment(trainTimeForm, "HH:mm");
@@ -82,7 +80,4 @@ database.ref().on("child_added", function(childSnapshot) {
         
     //adding into table
     $("#trainScheduleTable > tbody").append("<tr><td>" + trainName + "<tr><td>" + trainDestination + "<tr><td>" + trainFrequency + "<tr><td>" + nextArrival + "<tr><td>" + minutesAway + "<tr><td>");
- 
-
-
-
+});
