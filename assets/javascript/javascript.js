@@ -22,14 +22,14 @@ $("click-button").on("click", function() {
     event.preventDefault(); 
 
     //Grabbing user input
-    var trainNameForm = ("#trainNameForm").val().trim(); 
-    var destinationForm = ("#destinationForm").val().trim();
+    var trainNameForm = $("#trainNameForm").val().trim(); 
+    var destinationForm = $("#destinationForm").val().trim();
 
     //Tracking time 
     var trainTimeForm = moment($("#trainTimeForm").val().trim(), "HH:mm").format("HH:mm");
-    var frequencyForm = ("#frequencyForm").val().trim();
+    var frequencyForm = $("#frequencyForm").val().trim();
 
-    //creating local "temporary" objects for holding inputs
+    // temp objects for holding inputs
     var newTrain = {
         train: trainNameForm,
         destination: destinationForm,
@@ -47,23 +47,25 @@ $("click-button").on("click", function() {
 
     //clearing the inputs
     $("#trainNameForm").val("");
-    $("destinationForm").val("");
+    $("#destinationForm").val("");
     $("#trainTimeForm").val("");
     $("#frequencyForm").val("");
 });
 
-//creating firebase event for adding new train to database and a row in HTML when user adds entry
-database.ref().on("child_added", function(childSnapshot, prevChildKey) {
+//creating firebase event for adding new train to database 
+database.ref().on("child_added", function(childSnapshot) {
     console.log(childSnapshot.val());
 
-    //storing everything into a variable
-    var trainName = childSnapshot.val().train; 
-    var trainDestination = childSnapshot.val().destination;
-    var trainTime = childSnapshot.val().first;
-    var trainFrequency = chilsSnapshot.val().frequency;
+    var child = childSnapshot.val();
+    $("#table-name").append(child.train+ "<br>");
+    $("#table-destination").append(child.destination+ "<br>");
+    $("#table-nextArrival").append(child.first + "<br>");
+    $("#table-frequency").append(child.frequency + "<br>"); 
+    $("#table-minutesAway").append(child.minutesAway + "<br>"); 
+});
 
     //variable to figure converted train time
-    var trainTimeConverted = moment(trainTime, "HH:mm");
+    var trainTimeConverted = moment(trainTimeForm, "HH:mm");
 
     //declaring a time difference variable
     var timeDifference = moment().diff(moment(trainTimeConverted), "minutes"); 
@@ -79,8 +81,8 @@ database.ref().on("child_added", function(childSnapshot, prevChildKey) {
         console.log("Next Arrival: " + nextArrival); 
         
     //adding into table
-    $("#trainScheduleTable > tbody").append("<tr><td>" + trainName + "<tr><td>" + trainDestination + "<tr><td>" + trainFrequency + "<tr><td>" + nextArrival + "<tr><td>" + minutesAway + "<tr><td>")
-    
-});
+    $("#trainScheduleTable > tbody").append("<tr><td>" + trainName + "<tr><td>" + trainDestination + "<tr><td>" + trainFrequency + "<tr><td>" + nextArrival + "<tr><td>" + minutesAway + "<tr><td>");
+ 
+
 
 

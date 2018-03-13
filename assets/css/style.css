@@ -34,3 +34,7 @@ h3{
 .btn-outline-secondary {
     border-radius: 15px;
 }
+
+.card {
+    margin-bottom: 60px; 
+}
