@@ -18,8 +18,9 @@
     //Logging the current time-Working!
     console.log("Current Time: " + currentTime);
    
-$("click-button").on("click", function() {
-    event.preventDefault(); 
+$("#click-button").on("click", function(e) {
+    e.preventDefault(); 
+    console.log("working")
 
     //Grabbing user input
     var trainNameForm = $("#trainNameForm").val().trim(); 
@@ -53,14 +54,11 @@ $("click-button").on("click", function() {
 });
 
 //creating firebase event for adding new train to database 
-database.ref().on("child_added", function(childSnapshot, prevChildKey) {
+database.ref().on("child_added", function(childSnapshot) {
     console.log(childSnapshot.val());
 
     var child = childSnapshot.val();
-    $("#table-name").append(child.train+ "<br>");
-    $("#table-destination").append(child.destination+ "<br>");
-    $("#table-nextArrival").append(child.first + "<br>");
-    $("#table-frequencyForm").append(child.frequency + "<br>"); 
+
 
     //variable to figure converted train time
     var trainTimeConverted = moment(trainTimeForm, "HH:mm");
@@ -77,7 +75,11 @@ database.ref().on("child_added", function(childSnapshot, prevChildKey) {
     
     var nextArrival = moment(currentTime).add(minutesAway, "minutes").format("hh:mm A");
         console.log("Next Arrival: " + nextArrival); 
-        
-    //adding into table
-    $("#trainScheduleTable > tbody").append("<tr><td>" + trainName + "<tr><td>" + trainDestination + "<tr><td>" + trainFrequency + "<tr><td>" + nextArrival + "<tr><td>" + minutesAway + "<tr><td>");
+
+    $("#table-name").append(child.train+ "<br>");
+    $("#table-destination").append(child.destination+ "<br>");
+    $("#table-nextArrival").append(child.first + "<br>");
+    $("#table-frequencyForm").append(child.frequency + "<br>"); 
+    $("#table-minutesAway").append(minutesAway + "<br>");
+   
 });
