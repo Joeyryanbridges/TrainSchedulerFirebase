@@ -13,14 +13,13 @@
   var database = firebase.database();
 
   //Declare current time
-  var currentTime = moment().format();
-  
+  var currentTime = moment().format("HH:MM");
+    console.log(currentTime);
     //Logging the current time-Working!
     console.log("Current Time: " + currentTime);
    
 $("#click-button").on("click", function(e) {
     e.preventDefault(); 
-    console.log("working")
 
     //Grabbing user input
     var trainNameForm = $("#trainNameForm").val().trim(); 
@@ -41,10 +40,6 @@ $("#click-button").on("click", function(e) {
     database.ref().push(newTrain);
 
     //console logging to make sure the new data has been stored to database
-    console.log(newTrain.train);
-    console.log(newTrain.destination);
-    console.log(newTrain.first);
-    console.log(newTrain.frequency);
 
     //clearing the inputs
     $("#trainNameForm").val("");
@@ -61,22 +56,27 @@ database.ref().on("child_added", function(childSnapshot) {
 
 
     //variable to figure converted train time
-    var trainTimeConverted = moment(trainTimeForm, "HH:mm");
 
+    var trainStart = childSnapshot.val().first;  
+
+    var trainTimeConverted = moment(trainStart, ":mm");
+        console.log(trainTimeConverted);
     //declaring a time difference variable
-    var timeDifference = moment().diff(moment(trainTimeConverted), "minutes"); 
-        console.log(timeDifference);
+    var timeDifference = moment().diff(moment(trainTimeConverted), "minutes");   
 
     var frequencyMinutes = childSnapshot.val().frequency;
-        console.log("Frequency Minutes: " + frequencyMinutes);
-    
-    var minutesAway = Math.abs(timeDifference % frequencyMinutes);
-        console.log("Minutes Away: " + minutesAway);
-    
-    var nextArrival = moment(currentTime).add(minutesAway, "minutes").format("hh:mm A");
-        console.log("Next Arrival: " + nextArrival); 
 
-    $("#table-name").append(child.train+ "<br>");
+    var remainder = timeDifference % frequencyMinutes;
+    
+    var minutesAway = frequencyMinutes - remainder;
+        console.log(minutesAway);
+
+    var nextTrain = moment().add(minutesAway, "minutes");    
+
+    var nextArrival = moment(nextTrain).format("HH:mm");
+        console.log(nextArrival);
+
+    $("#table-name").append(child.train + "<br>");
     $("#table-destination").append(child.destination+ "<br>");
     $("#table-nextArrival").append(child.first + "<br>");
     $("#table-frequencyForm").append(child.frequency + "<br>"); 

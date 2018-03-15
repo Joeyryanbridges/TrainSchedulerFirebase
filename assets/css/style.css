@@ -1,4 +1,6 @@
-
+body {
+    background: darkgray;
+}
 
 h3{
     text-align: center;
@@ -14,7 +16,7 @@ h3{
     background-color: transparent;
     margin-left: 1%;
     margin-right: 5%;
-    margin-top: 1%;
+    margin-top: 0%;
 }
 
 .train{
@@ -36,5 +38,5 @@ h3{
 }
 
 .card {
-    margin-bottom: 60px; 
+    margin-bottom: 30px; 
 }
