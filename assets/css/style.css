@@ -1,5 +1,8 @@
 body {
-    background: darkgray;
+        background-image: url('../images/background.jpg');
+        background-repeat: no-repeat;
+        background-size: 100% 100%;
+    }
 }
 
 h3{
@@ -10,18 +13,33 @@ h3{
     text-shadow: slategray;
 }
 
+.h3, h3 {
+    font-size: 1.75rem;
+    float: right;
+    margin-top: 109px;
+    margin-right: -1px;
+   /* text-shadow: 0 5px 5px #625763;*/
+}
+
+p {
+    color: rgb(137, 146, 146);
+    font-size: 0.66rem;
+    margin-top: 38px;
+}
+
 
 .jumbotron {
-	border-radius: 25px;
+    border-radius: 25px;
     background-color: transparent;
     margin-left: 1%;
     margin-right: 5%;
     margin-top: 0%;
+    padding-bottom: 12px;
 }
 
 .train{
     border-radius: 25px;
-    border: 3px solid black;
+    box-shadow: 10px 10px 10px rgb(47, 40, 35);
 }
 
 
@@ -38,5 +56,58 @@ h3{
 }
 
 .card {
-    margin-bottom: 30px; 
+    margin-bottom: 30px;
+    box-shadow: 15px 15px 15px black;
+}
+
+strong {
+    color: rgb(216, 215, 215);
+}
+
+
+/*980PX*/
+
+@media screen and (max-width:980px) {
+    .train {
+        border-radius: 25px;
+        box-shadow: 10px 10px 10px rgb(47, 40, 35);
+        margin-left: -19px;
+        width: 300px;
+        height: 300px;
+    }
+
+    .h3, h3 {
+        font-size: 1.75rem;
+        float: right;
+        margin-top: 58px;
+        margin-right: -19px;
+    }
+}
+
+/*768PX*/
+
+@media screen and (max-width:768px) {
+	
+
+}
+
+
+/*640PX*/
+
+@media screen and (max-width:640px) {
+
+    .train {
+        border-radius: 25px;
+        box-shadow: 10px 10px 10px rgb(47, 40, 35);
+        margin-left: -31px;
+        width: 249px;
+        height: 195px;
+    }
+
+    .h3, h3 {
+        font-size: 1.5em;
+        float: right;
+        margin-top: 24px;
+        margin-right: -51px;
+    }
 }

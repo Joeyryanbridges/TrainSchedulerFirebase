@@ -25,74 +25,72 @@
 	</head>
 	<body>
 
-			<div class="container">
+		<div class="container">
 				<div class="jumbotron">
-					<img src="assets/images/train.gif" class="train" height="300" width="660">
-					<h3>Train Schedule App.<br><br> Where would you like <br>to go?</h3>
+					<img src="assets/images/train.gif" class="train" height="350" width="660">
+					<h3>Train Schedule App.<br><br> Where would you like <br>to go?<br><p>created by joey r. bridges</p></h3>
+				</div>
+			</div>
+			<div class="container">
+				<div class="card">
+					<div class="card-header"><center><strong>Current Train Schedule</strong></center>
+					</div>	
+					<div class="card-body">
+						<table class="table table-striped" id="trainScheduleTable">
+							<thead class="text-center">
+								<tr>
+									<th>Train Name</th>
+									<th>Destination</th>
+									<th>Frequency (min)</th>
+									<th>Next Arrival</th>
+									<th>Minutes Away</th>
+								</tr>
+							</thead>
+							<tbody class="text-center" id="names">
+								<td id="table-name"></td>
+								<td id="table-destination"></td>
+								<td id="table-frequencyForm"></td>
+								<td id="table-nextArrival"></td>
+								<td id="table-minutesAway"></td>
+							</tbody>		
+						</table>
 					</div>
-					<div class="container">
-						<div class="card">
-						<div class="card-header"> Current Train Schedule
-						</div>	
-							<div class="card-body">
-									<table class="table table-striped" id="trainScheduleTable">
-										<thead class="text-center">
-											<tr>
-												<th>Train Name</th>
-												<th>Destination</th>
-												<th>Frequency (min)</th>
-												<th>Next Arrival</th>
-												<th>Minutes Away</th>
-												</tr>
-												</thead>
-												<tbody class="text-center" id="names">
-													<td id="table-name"></td>
-													<td id="table-destination"></td>
-													<td id="table-frequencyForm"></td>
-													<td id="table-nextArrival"></td>
-													<td id="table-minutesAway"></td>
-												</tbody>		
-											</table>
-										</div>
-									</div>
-								</div>
+				</div>
+			</div>
+		<br>	
+		<div class="container">
+			<div class="card">
+				<div class="card-header">
+				<center><strong>Where would you like to go?!</strong></center>	
+				</div>
+				<div class="card-body">
+					<div class="form">
+						<form>
+							<div class="form-group">
+								<label for="trainNameForm">Train Name</label>
+								<input type="text" class="form-control" id="trainNameForm">
 							</div>
-						</div>	
-					</div>		
-					<br>	
-					<div class="container">
-						<div class="card">
-							<div class="card-header">
-										Add Train
-									</div>
-										<div class="card-body">
-											<div class="form">
-											<form>
-											<div class="form-group">
-												<label for="trainNameForm">Train Name</label>
-												<input type="text" class="form-control" id="trainNameForm">
-											</div>
-											<div class="form-group">
-												<label for="destinationForm">Destination</label>
-												<input type="text" class="form-control" id="destinationForm">
-											</div>
-											<div class="form-group">
-												<label for="firstTrainTimeForm">First Train Time (HH:mm - Military Time)</label>
-												<input type="text" class="form-control" id="trainTimeForm">
-											</div>
-											<div class="form-group">
-												<label for="frequency">Frequency (min)</label>
-												<input type="text" class="form-control" id="frequencyForm">
-											</div>
-											<br>
-											<button class="btn-outline-secondary" id="click-button">Submit</button>
-											</form>
-										</div>
-									</div>
-								</div>
-								
-				</div>	
-				
-	<script src="assets/javascript/javascript.js"></script>
-</body>
-</html>
+							<div class="form-group">
+								<label for="destinationForm">Destination</label>
+								<input type="text" class="form-control" id="destinationForm">
+							</div>
+							<div class="form-group">
+								<label for="firstTrainTimeForm">First Train Time (HH:mm - Military Time)</label>
+								<input type="text" class="form-control" id="trainTimeForm">
+							</div>
+							<div class="form-group">
+								<label for="frequency">Frequency (min)</label>
+								<input type="text" class="form-control" id="frequencyForm">
+							</div>
+								<br>
+							<button class="btn-outline-secondary" id="click-button">Submit</button>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>	
+	
+						
+			<script src="assets/javascript/javascript.js"></script>
+		</body>
+		</html>
